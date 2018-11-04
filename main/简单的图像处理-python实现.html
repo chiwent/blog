@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Chiwent&#39;s blog | 简单的图像处理 | 简单的图像处理</title>
+    <meta name="description" content="">
+    <link rel="icon" href="/blog/favicon.ico">
+    
+    <link rel="preload" href="/blog/assets/css/17.styles.16209719.css" as="style"><link rel="preload" href="/blog/assets/js/app.f602ab0d.js" as="script"><link rel="preload" href="/blog/assets/js/1.c5a6286d.js" as="script"><link rel="prefetch" href="/blog/assets/js/9.b6feefdb.js"><link rel="prefetch" href="/blog/assets/js/2.9740591e.js"><link rel="prefetch" href="/blog/assets/js/3.7d8d6283.js"><link rel="prefetch" href="/blog/assets/js/4.a375d098.js"><link rel="prefetch" href="/blog/assets/js/5.61d6a72b.js"><link rel="prefetch" href="/blog/assets/js/6.19ca0ece.js"><link rel="prefetch" href="/blog/assets/js/7.670f19f6.js"><link rel="prefetch" href="/blog/assets/js/8.7b1acf37.js"><link rel="prefetch" href="/blog/assets/js/0.600f4094.js"><link rel="prefetch" href="/blog/assets/js/10.bd8d0101.js"><link rel="prefetch" href="/blog/assets/js/11.0684896d.js"><link rel="prefetch" href="/blog/assets/js/12.c5503785.js"><link rel="prefetch" href="/blog/assets/js/13.d489fd46.js"><link rel="prefetch" href="/blog/assets/js/14.78180023.js"><link rel="prefetch" href="/blog/assets/js/15.94fb2bb1.js"><link rel="prefetch" href="/blog/assets/js/16.718066ae.js">
+    <link rel="stylesheet" href="/blog/assets/css/17.styles.16209719.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div><div class="wrap"><div class="theme-container container no-sidebar"><header class="navbar"><div class="nav-header"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/blog/" class="home-link router-link-active"><img src="/blog/logo.jpg" class="logo"><span class="site-name can-hide">
+        Chiwent's blog
+      </span></a><nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link">HOME</a></div><div class="nav-item"><a href="https://github.com/chiwent" target="_blank" rel="noopener noreferrer" class="nav-link">GITHUB</a></div><div class="nav-item"><a href="/blog/about/" class="nav-link">About</a></div><!----></nav><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div></div></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link">HOME</a></div><div class="nav-item"><a href="https://github.com/chiwent" target="_blank" rel="noopener noreferrer" class="nav-link">GITHUB</a></div><div class="nav-item"><a href="/blog/about/" class="nav-link">About</a></div><!----></nav><!----></div><div class="page-container"><div class="page card"><!----><span class="page-timestamp"></span><div class="content"><h1 id="简单的图像处理"><a href="#简单的图像处理" aria-hidden="true" class="header-anchor">#</a> 简单的图像处理</h1><p>在这篇文章，将简要地分别通过MATLAB、Python、JavaScript来实现一些图像处理的基本操作<br></p><h2 id="python篇"><a href="#python篇" aria-hidden="true" class="header-anchor">#</a> Python篇</h2><h3 id="获取图片的信息"><a href="#获取图片的信息" aria-hidden="true" class="header-anchor">#</a> 获取图片的信息</h3><h4 id="图像的尺寸"><a href="#图像的尺寸" aria-hidden="true" class="header-anchor">#</a> 图像的尺寸</h4><pre class="language-text"><code>import cv2
+img = cv2.imread('test.jpg')
+size = img.shape
+print(size)
+height,width,channels = img.shape
+print(height,width,channels)
+
+# 或者
+
+from PIL import Image
+img = Image.open('test.jpg')
+imgSize = img.size
+print(max(imgSize),min(imgSize))
+</code></pre><h4 id="图片缩放"><a href="#图片缩放" aria-hidden="true" class="header-anchor">#</a> 图片缩放</h4><pre class="language-text"><code>samll_img = cv2.resize(src=img, dsize=None, fx=0.5, fy=0.5)
+# 宽高缩小为原来的一半
+</code></pre><h4 id="复制图像"><a href="#复制图像" aria-hidden="true" class="header-anchor">#</a> 复制图像</h4><pre class="language-text"><code>import cv2
+import numpy as np
+
+img = cv2.imread('test.jpg')
+size = img.shape
+im = np.zeros(img.shape, np.uint8)
+
+# 也可以直接：
+im = img.copy()
+</code></pre><h4 id="pil图片和opencv图片相互转换"><a href="#pil图片和opencv图片相互转换" aria-hidden="true" class="header-anchor">#</a> PIL图片和opencv图片相互转换</h4><p>OpenCV to PIL:<br></p><pre class="language-text"><code>pil = Image.fromarray(cv2.cvtColor(cv, cv2.COLORBGR2RGB))
+</code></pre><p>PIL to OpenCV:<br></p><pre class="language-text"><code>pil = PIL.Image.open('test.jpg').convert('RGB')
+cv = numpy.array(pil)
+cv = cv[:,:,::-1].copy()
+</code></pre><h3 id="灰度化"><a href="#灰度化" aria-hidden="true" class="header-anchor">#</a> 灰度化</h3><h4 id="通过matplotlab库灰度化"><a href="#通过matplotlab库灰度化" aria-hidden="true" class="header-anchor">#</a> 通过matplotlab库灰度化</h4><p>首先安装<code>matplotlab</code>库：<code>sudo pip install matplotlib</code><br></p><pre class="language-text"><code>import matplotlib.pyplot as plt
+import matlotlib.image as mpimg
+import numpy as np
+img = mpimg.imread('test.jpg')
+img.shape 
+# (282, 292, 3)
+plt.axis('on') #显示坐标轴
+plt.show()  #显示原图片
+
+def rgb2gray(rgb):
+    return np.dot(rgb[...,:3], [0.299, 0.587, 0.114])
+
+gray = rgb2gray(img)
+plt.imshow(gray,cmap = plt.get_cmap('gray'))
+plt.axis('on')
+plt.show()
+</code></pre><h4 id="通过pil灰度化"><a href="#通过pil灰度化" aria-hidden="true" class="header-anchor">#</a> 通过PIL灰度化</h4><pre class="language-text"><code>from PIL import Image
+img = Image.open('test.jpg')
+img.show() # 显示原图
+L = img.convert('L') # 灰度化
+L.show() # 显示灰度图
+L = img.convert('1') # 二值化
+L.show() # 二值化图
+</code></pre><p>扩展：将某路径下的所有彩色图片灰度化：<br></p><pre class="language-text"><code>from PIL import Image
+import os
+def get_path(path):
+	return [os.path.join(path,f) for f in os.listdir(path) if f.endswith('.jpg')]
+pth = get_path('./')
+print(pth)
+for img in pth:
+	outfile = os.path.splitext(img)[0] + '.jpg'
+	print(outfile)
+	if './gray'+outfile.split('./')[1] not in pth and 'gray' not in outfile:
+	#if 'gray' not in outfile:
+		#print('1'+img)
+		try:
+			img = Image.open(img).convert('L')
+			#print('img',img)
+			#img.show()
+			im = 'gray' + outfile.split('./')[1]	
+			img.save(im)
+		except IOError:
+			print('can not convert',img)
+
+</code></pre><h4 id="通过opencv灰度化"><a href="#通过opencv灰度化" aria-hidden="true" class="header-anchor">#</a> 通过opencv灰度化</h4><pre class="language-text"><code>import cv2
+from matpplotlib import pyplot as plt
+im = cv2.imread('test.jpg')
+gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+plt.axis('off')
+plt.imshow(im,'gray') # = plt.imshow(gray,cmap='gray') or plt.imshow(gray, cmap=plt.get_cmap('gray'))
+plt.show()
+</code></pre><p>在一些编程社区上经常看到：<code>cv2.imshow(gray,'gray')</code>这样的代码，但是查阅了Python opencv官网却没发现这样的格式。并且本人在调用opencv的时候调用了<code>cv2.imshow('img',img)</code>，然后就出现了进程无反应的状况，目前原因不详<br></p><p>问题解决：针对上述不显示图片并且进程卡死的问题，给出下列的解决方案：<br></p><pre class="language-text"><code>import cv2
+im = cv2.imread('test1.jpg') # cv2.imread('test1.jpg',0)直接输出灰度图
+gray = cv2.cvtColor(im,cv2.COLOR_RGB2GRAY) 
+cv2.nameWindow('gray',0)
+cv2.startWindowThread()
+cv2.imshow('gray',gray)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+</code></pre><p>bug解决请参考：<a href="https://blog.csdn.net/GAN_player/article/details/75098226" target="_blank" rel="noopener noreferrer">cv2.destoryAllWindows()无效的解决方法</a><br></p><p>详情可以查看opencv官方文档：https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_gui/py_image_display/py_image_display.html<br></p><h3 id="二值化"><a href="#二值化" aria-hidden="true" class="header-anchor">#</a> 二值化</h3><h4 id="opencv"><a href="#opencv" aria-hidden="true" class="header-anchor">#</a> opencv</h4><p>固定阈值二值化<br>
+用到的函数：<code>cv2.threshold(src, thresh, maxval, type[, dst])</code>，返回值为<code>retval、dst</code><br></p><p>参数说明：</p><ul><li>src:输入图像</li><li>thresh：阈值</li><li>maxval：输出图像最大值</li><li>type：阈值类型</li><li>dst：目标图像</li></ul><pre class="language-text"><code>retval, im = cv2.threshold(gray, 50, 255, cv2.THRESH_BINARY)
+plt.axis('off')
+plt.title('二值化')
+plt.imshow()
+</code></pre><br>
+算法平均法的自适应二值化和高斯加权均值自适应二值化<br>
+用到的函数：`cv2.adaptiveThreshold(src, maxValue, adaptiveMethod, thresholdType, blockSize, C[, dst])`，返回值为`dst`<br><p>参数说明：</p><ul><li>src：输入图像</li><li>maxval：输出图像的最大值</li><li>adaptiveMethod：设置为<code>cv2.ADAPTIVE_THRESH_MEAN_C</code>表示使用算术平均值法，设置为<code>cv2.ADAPTIVE_THRESH_GAUSSIAN_C</code>表示使用高斯权重均值法</li><li>thresholdType：阈值类型</li><li>blockSize：b的值</li><li>C：从均值中减去的常数，用于得到阈值</li><li>dst：目标图像</li></ul><p>这里，我们将b设为5，C设为10<br></p><pre class="language-text"><code>im = cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,5,10)
+plt.axis('off')
+plt.title('Adaptive Thresholding')
+plt.imshow(im, cmap='gray')
+plt.show()
+</code></pre><h3 id="绘制直方图"><a href="#绘制直方图" aria-hidden="true" class="header-anchor">#</a> 绘制直方图</h3><h4 id="通过matplotlib库绘制灰度直方图"><a href="#通过matplotlib库绘制灰度直方图" aria-hidden="true" class="header-anchor">#</a> 通过matplotlib库绘制灰度直方图</h4><p>灰度图可以使用<code>hist</code>函数绘制，这个函数第一个参数只能接受一位数组作为输入，所以第一个参数需要通过<code>flatten</code>将任意数组按照行优先准则转换为一维数组；第二个参数则是规定小区间的数目。<br></p><pre class="language-text"><code>from PIL import Image
+from pylab import *
+# 图片转换为数组并灰度化
+img = array(Image.open('test.jpg').convert('L'))
+# 直方图图像
+hist(img.flatten(),128)
+show()
+</code></pre><p>或者这样：<br></p><pre class="language-text"><code>import matplotlib.pyplot as plt
+from PIL import Image
+import numpy as np
+im = np.array(Image.open('test.jpg').convert('L'))
+plt.figure('gray')
+plt.title('gray')
+arr = im.flatten()
+n,bins,patches = plt.hist(arr, bins=256, density=1, facecolor='blue', alpha=0.7)
+plt.show()
+</code></pre><p><code>hist</code>的参数说明：</p><ul><li>arr: 需要计算直方图的一维数组</li><li>bins：直方图柱数，可选，默认为10</li><li>density/normed：是否将得到的直方图向量归一化，默认为0</li><li>facecolor：直方图颜色</li><li>alpha：透明度</li></ul><p>facecolor和edgecolor可以分别简写为<code>fc</code>和<code>ec</code><br></p><p>更多函数说明参考官方库：https://matplotlib.org/api/_as_gen/matplotlib.pyplot.hist.html<br></p><p>如果需要显示彩色图的直方图：<br></p><pre class="language-text"><code>from PIL import Image
+import numpy as np
+import matplotlib.pyplot as plt
+im = Image.open('test.jpg')
+r,g,b = im.split()
+# 也可以r = im[:,:,0], g = im[::,1], b = im[:,:,2]
+plt.figure('Origin')
+plt.title('Origin')
+arr = np.array(r).flatten()
+plt.hist(arr, bins=256, density=1, facecolor='r', edgecolor='r', hold=1)
+arr = np.array(g).flatten()
+plt.hist(arr, bins=256, density=1, facecolor='g', edgecolor='g', hold=1)
+arr = np.array(b).flatten()
+plt.hist(arr, bins=256, density=1, facecolor='b', edgecolor='b', hold=1)
+plt.show()
+</code></pre><br><h3 id="形态学"><a href="#形态学" aria-hidden="true" class="header-anchor">#</a> 形态学</h3><h4 id="膨胀和腐蚀"><a href="#膨胀和腐蚀" aria-hidden="true" class="header-anchor">#</a> 膨胀和腐蚀</h4><p>和MATLAB一样，Python opencv的膨胀腐蚀函数分别是<code>dilate</code>和<code>erode</code><br></p><p>简单地先通过OTSU二值化再进行腐蚀膨胀：<br></p><pre class="language-text"><code>#coding=utf-8
+
+import cv2
+from matplotlib import pyplot as plt
+import numpy as np
+
+while(1):
+	im = cv2.imread('zui.jpg',0)
+	ret,th = cv2.threshold(im, 0, 255, cv2.THRESH_OTSU)
+	#plt.imshow(th,'otsu')
+	kernel = np.ones((3,3),np.uint8)
+	im1 = cv2.erode(th,kernel,iterations=7)
+	im2 = cv2.dilate(im1,kernel,iterations=1)
+	cv2.imshow('dilation',im2)
+	if cv2.waitKey(0):
+		break
+cv2.destroyAllWindows()
+</code></pre><p>开运算和闭运算：<br></p><pre class="language-text"><code>import cv2
+import numpy as np
+while(1):
+    im = cv2.imread('test.jpg',0)
+    kernel = np.ones((3,3),np.uint8)
+    # or cv2.getStructuringElement(cv2.MORPH_RECT,(3,3))
+    open = cv2.morphologyEx(im, cv2.MORPH_OPEN, kernel)
+    # 如果是闭运算就是cv2.MORPH_CLOSE
+    cv2.imshow('Gray',im)
+    cv2.imshow('opening',open)
+    if cv2.waitKey(0):
+        break
+cv2.destroyAllWindows()
+</code></pre><p>更多有关Python opencv形态学的内容可以看：<a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_morphological_ops/py_morphological_ops.html?highlight=getstructuringelement" target="_blank" rel="noopener noreferrer">OpenCV-Python Tuorials Morphological Transformations</a><br></p><p>边沿检测：<br></p><pre class="language-text"><code>#coding=utf-8
+
+import cv2
+import numpy as np
+
+im = cv2.imread('zui.jpg')
+im = cv2.cvtColor(im, cv2.COLOR_RGB2GRAY)
+kernel = cv2.getStructuringElement(cv2.MORPH_RECT,(3,3))
+dilation = cv2.dilate(im,kernel)
+erodetion = cv2.erode(im, kernel)
+edge = cv2.absdiff(dilation, erodetion) #两幅图相减得到边缘
+ret,edge = cv2.threshold(edge, 50, 100, cv2.THRESH_BINARY) #二值化后观察更清晰
+edge = cv2.bitwise_not(edge) #颜色反转
+cv2.imshow('Origin',im)
+cv2.imshow('Edge',edge)
+if cv2.waitKey(0):
+	cv2.destroyAllWindows()
+</code></pre><p>角点检测:<br></p><p>基本原理：<br>
+建立一个窗口区域，该窗口向各个方向进行平移，如果在没有遇到边角的情况下，窗口像素不会发送变化；如果窗口在偏移过程压过一条直线，并且沿着这条直线的方向进行平移，窗口像素值也不会变化；假如遇到了拐角，窗口偏移后任意方向都会有像素改变，即判断为角点<br></p><p>基本方法：<code>cv2.cornerHarris()</code>和<code>cv2.cornerSubPix()</code><br><code>cornerHarris</code>参数说明：</p><ul><li>img：输入图像，数据类型要是<code>float32</code></li><li>blockSize：角点检测中的邻域值</li><li>ksize：使用<code>Sobel</code>函数求偏导的窗口大小</li><li>k：角点检测参数，取值为0.04到0.06</li></ul><pre class="language-text"><code>import cv2
+import numpy as np
+
+filename = 'test.jpg'
+
+im = cv2.imread(filename)
+gray = cv2.cvtColor(im, cv2.COLOR_RGB2GRAY)
+gray = np.float32(gray)
+dst = cv2.cornerHarris(gray, 2,3,0.04)
+dst = cv2.dilate(dst,None) #膨胀处理
+im[dst &gt; 0.01*dst.max()] = [0,0,255]
+cv2.imshow('dst',im)
+if cv2.waitKey(0):
+    cv2.destroyAllWindows()
+</code></pre><p>亚像素级精确度的角点：<br>
+基本方法是<code>cornerSubPix</code>，首先需要先找到Harris角点，然后找到某个角点的所有角点坐标值的重心，传入<code>cornerSubPix</code>（因为一个角点上可能有一堆角点，所以要取重心）。我们用红色表示Harris角点，绿色表示修正后的角点。通过迭代运算到一定次数停止：<br></p><pre class="language-text"><code>#coding=utf-8
+
+import cv2
+import numpy as np
+
+filename = 'zui.jpg'
+img = cv2.imread(filename)
+gray = cv2.cvtColor(img,cv2.COLOR_RGB2GRAY)
+
+# 找角点
+gray = np.float32(gray)
+dst = cv2.cornerHarris(gray,2,3,0.04)
+dst = cv2.dilate(dst,None)
+ret,dst = cv2.threshold(dst,0.01*dst.max(),255,0)
+dst = np.uint8(dst)
+
+# 找重心
+ret,labels,stats,centroids = cv2.connectedComponentsWithStats(dst)
+
+# 定义迭代次数
+criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 100, 0.001)
+corners = cv2.cornerSubPix(gray,np.float32(centroids),(5,5),(-1,-1),criteria) # 返回角点
+
+res = np.hstack((centroids,corners))
+res = np.int0(res)
+img[res[:,1],res[:,0]] = [0,0,255]
+img[res[:,3],res[:,2]] = [0,255,0]
+
+cv2.imshow('img',img)
+if cv2.waitKey(0):
+	cv2.destroyAllWindows()
+</code></pre><pre class="language-text"><code>#coding=utf-8
+# 代码来自：https://zhuanlan.zhihu.com/p/36801693
+import cv2
+import numpy as np
+
+# 读取名称为 p14.png的图片
+img = cv2.imread(&quot;p14.png&quot;,1)
+img_org = cv2.imread(&quot;p14.png&quot;,1)
+
+# 转换为黑白图像
+gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+
+# 转换为32为浮点数
+gray = np.float32(gray)
+
+# Harris角点操作
+processed = cv2.cornerHarris(gray,3,3,0.05)
+
+# 把角点颜色变为绿色
+img[processed&gt;0.03*processed.max()] = [0,255,0]
+
+# 显示原图和处理后的图像
+cv2.imshow(&quot;org&quot;,img_org)
+cv2.imshow(&quot;processed&quot;,img)
+
+cv2.waitKey(0)
+</code></pre><p><br><br></p><hr><p></p><p>参考：</p><ul><li><a href="https://blog.csdn.net/xiajun07061225/article/details/6910129" target="_blank" rel="noopener noreferrer">matlab直方图均衡化详解及编程实现</a></li><li><a href="https://blog.csdn.net/sunmc1204953974/article/details/50606395" target="_blank" rel="noopener noreferrer">python图像直方图与直方图均衡化</a></li><li><a href="https://blog.csdn.net/JohinieLi/article/details/69389980" target="_blank" rel="noopener noreferrer">python 读取、保存、二值化、灰度化图片+opencv处理图片的方法</a></li><li><a href="https://blog.csdn.net/tengfei461807914/article/details/76242362" target="_blank" rel="noopener noreferrer">python opencv入门 形态学转换（13）</a></li><li><a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_table_of_contents_imgproc/py_table_of_contents_imgproc.html#py-table-of-content-imgproc" target="_blank" rel="noopener noreferrer">Python opencv英文文档</a></li><li><a href="https://www.kancloud.cn/aollo/aolloopencv/269602" target="_blank" rel="noopener noreferrer">Python opencv官方文档汉化，看云提供</a></li><li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_morphological_ops/py_morphological_ops.html?highlight=getstructuringelement" target="_blank" rel="noopener noreferrer">OpenCV-Python Tuorials Morphological Transformations</a></li><li><a href="https://blog.csdn.net/u010128736/article/details/52801310" target="_blank" rel="noopener noreferrer">阈值化分割（二）OTSU法-附Python实现</a></li><li><a href="https://pythonprogramming.net/morphological-transformation-python-opencv-tutorial/" target="_blank" rel="noopener noreferrer">Morphological Transformations OpenCV Python Tutorial</a></li><li><a href="http://www.cnblogs.com/21207-iHome/articles/6254405.html" target="_blank" rel="noopener noreferrer">python opencv角点检测</a></li><li><a href="https://blog.csdn.net/tengfei461807914/article/details/78009887" target="_blank" rel="noopener noreferrer">python opencv入门 Harris角点检测（31）</a></li><li><a href="https://blog.csdn.net/tengfei461807914/article/details/79492012" target="_blank" rel="noopener noreferrer">python opencv入门 FAST角点检测算法（35）</a></li><li><a href="https://github.com/wizardforcel/py-ds-intro-tut-zh/blob/master/opencv.md" target="_blank" rel="noopener noreferrer">python opencv图像和视频分析</a></li><li><a href="https://blog.csdn.net/sunny2038/article/details/9253823" target="_blank" rel="noopener noreferrer">OpenCV-Python教程（9、使用霍夫变换检测直线）</a></li><li><a href="https://blog.csdn.net/dcrmg/article/details/78880046" target="_blank" rel="noopener noreferrer">OpenCV-Python 霍夫直线检测-HoughLinesP函数参数</a></li><li><a href="https://wax8280.github.io/2016/10/02/682/" target="_blank" rel="noopener noreferrer">学习OpenCV-Python——检测</a></li><li><a href="https://blog.csdn.net/on2way/article/details/46801063" target="_blank" rel="noopener noreferrer">Python下opencv使用笔记（三）（图像的几何变换）</a></li><li><a href="https://blog.csdn.net/on2way/article/details/46812121" target="_blank" rel="noopener noreferrer">Python下opencv使用笔记（四）（图像的阈值处理）</a></li></ul></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
+        ← <a href="/blog/main/简单的图像处理-matlab实现.html" class="prev">
+          简单的图像处理-matlab版
+        </a></span><span class="next"><a href="/blog/main/防抖和节流.html">
+          防抖和节流函数介绍
+        </a> →
+      </span></p></div></div><!----></div><div class="tool-group"><!----></div></div></div><div class="background-mask" style="background:#f6f6f6;"></div></div></div>
+    <script src="/blog/assets/js/1.c5a6286d.js" defer></script><script src="/blog/assets/js/app.f602ab0d.js" defer></script>
+  </body>
+</html>

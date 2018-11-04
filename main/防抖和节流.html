@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Chiwent&#39;s blog | 防抖和节流函数介绍 | 防抖和节流函数介绍</title>
+    <meta name="description" content="">
+    <link rel="icon" href="/blog/favicon.ico">
+    
+    <link rel="preload" href="/blog/assets/css/17.styles.16209719.css" as="style"><link rel="preload" href="/blog/assets/js/app.f602ab0d.js" as="script"><link rel="preload" href="/blog/assets/js/0.600f4094.js" as="script"><link rel="prefetch" href="/blog/assets/js/9.b6feefdb.js"><link rel="prefetch" href="/blog/assets/js/1.c5a6286d.js"><link rel="prefetch" href="/blog/assets/js/2.9740591e.js"><link rel="prefetch" href="/blog/assets/js/3.7d8d6283.js"><link rel="prefetch" href="/blog/assets/js/4.a375d098.js"><link rel="prefetch" href="/blog/assets/js/5.61d6a72b.js"><link rel="prefetch" href="/blog/assets/js/6.19ca0ece.js"><link rel="prefetch" href="/blog/assets/js/7.670f19f6.js"><link rel="prefetch" href="/blog/assets/js/8.7b1acf37.js"><link rel="prefetch" href="/blog/assets/js/10.bd8d0101.js"><link rel="prefetch" href="/blog/assets/js/11.0684896d.js"><link rel="prefetch" href="/blog/assets/js/12.c5503785.js"><link rel="prefetch" href="/blog/assets/js/13.d489fd46.js"><link rel="prefetch" href="/blog/assets/js/14.78180023.js"><link rel="prefetch" href="/blog/assets/js/15.94fb2bb1.js"><link rel="prefetch" href="/blog/assets/js/16.718066ae.js">
+    <link rel="stylesheet" href="/blog/assets/css/17.styles.16209719.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div><div class="wrap"><div class="theme-container container no-sidebar"><header class="navbar"><div class="nav-header"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/blog/" class="home-link router-link-active"><img src="/blog/logo.jpg" class="logo"><span class="site-name can-hide">
+        Chiwent's blog
+      </span></a><nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link">HOME</a></div><div class="nav-item"><a href="https://github.com/chiwent" target="_blank" rel="noopener noreferrer" class="nav-link">GITHUB</a></div><div class="nav-item"><a href="/blog/about/" class="nav-link">About</a></div><!----></nav><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div></div></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link">HOME</a></div><div class="nav-item"><a href="https://github.com/chiwent" target="_blank" rel="noopener noreferrer" class="nav-link">GITHUB</a></div><div class="nav-item"><a href="/blog/about/" class="nav-link">About</a></div><!----></nav><!----></div><div class="page-container"><div class="page card"><!----><span class="page-timestamp"></span><div class="content"><h1 id="防抖和节流函数介绍"><a href="#防抖和节流函数介绍" aria-hidden="true" class="header-anchor">#</a> 防抖和节流函数介绍</h1><p>二者的共同点是都是限制触发频率（都是通过定时器实现）。
+<br></p><p>假如让我们设计一个全屏滚动效果，优化可以通过下面方式入手：
+<br></p><ul><li>更改页面大小时，通过防抖（debounce）函数限制<code>resize</code>事件触发频率。</li><li>滚动/滑动事件触发时，通过节流（throttle）函数限制滚动/滑动事件触发频率。</li></ul><br><p>二者的区别：<br></p><p>防抖函数工作时，如果在指定的延迟事件内，某个事件连续触发，那么绑定在这个事件上的回调函数永远不会触发，只有在延迟时间内，这个事件不再触发，对应的回调函数才会执行。防抖函数非常适合于改变窗口大小这一事件，也符合拖动到位以后再触发事件，如果一直拖不停，始终不触发事件。
+<br></p><p>节流函数是在延迟时间内，绑定在事件上的回调函数只能触发一次，即便是在延迟时间内连续触发事件，也不会阻止在延迟时间内有一个回调函数执行。并且节流函数允许我们指定回调函数是在延迟时间开始时还是结束时执行
+<br></p><p>鉴于节流函数的上述特点，尤其适合优化滚动/滑动事件：<br></p><ul><li>可以限制频率；</li><li>不会因为滚动/滑动事件太灵敏（在延迟时间内不断触发）导致注册在事件上的回调函数无法执行；</li><li>可以设置在延迟时间开始时触发回调函数，从而避免用户感到操作之后的短暂延时。</li></ul><p>代码：<br></p><pre class="language-js"><code>
+<span class="token comment">// 防抖</span>
+<span class="token comment">// params:</span>
+<span class="token comment">// method：回调函数   context：上下文   event：传入事件   delay：延迟函数</span>
+<span class="token function">debounce</span><span class="token punctuation">(</span>method<span class="token punctuation">,</span> context<span class="token punctuation">,</span> event<span class="token punctuation">,</span> delay<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">clearTimeout</span><span class="token punctuation">(</span>method<span class="token punctuation">.</span>tId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	method<span class="token punctuation">.</span>tId <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+		method<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span> delay<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment">// 节流</span>
+<span class="token comment">// params:</span>
+<span class="token comment">// method：回调函数   context：上下文   delay：延迟函数</span>
+<span class="token function">throttle</span><span class="token punctuation">(</span>method<span class="token punctuation">,</span> context<span class="token punctuation">,</span> delay<span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">let</span> wait <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>wait<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			method<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> arguaments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			wait <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+			<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+				wait <span class="token operator">=</span> fasle<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span><span class="token punctuation">,</span> delay<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><!----><!----></div><!----></div><div class="tool-group"><!----></div></div></div><div class="background-mask" style="background:#f6f6f6;"></div></div></div>
+    <script src="/blog/assets/js/0.600f4094.js" defer></script><script src="/blog/assets/js/app.f602ab0d.js" defer></script>
+  </body>
+</html>

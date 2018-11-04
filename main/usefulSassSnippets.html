@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Chiwent&#39;s blog | 有用的SASS mixins代码片段 | 有用的SASS mixins代码片段</title>
+    <meta name="description" content="">
+    <link rel="icon" href="/blog/favicon.ico">
+    
+    <link rel="preload" href="/blog/assets/css/17.styles.16209719.css" as="style"><link rel="preload" href="/blog/assets/js/app.f602ab0d.js" as="script"><link rel="preload" href="/blog/assets/js/8.7b1acf37.js" as="script"><link rel="prefetch" href="/blog/assets/js/9.b6feefdb.js"><link rel="prefetch" href="/blog/assets/js/1.c5a6286d.js"><link rel="prefetch" href="/blog/assets/js/2.9740591e.js"><link rel="prefetch" href="/blog/assets/js/3.7d8d6283.js"><link rel="prefetch" href="/blog/assets/js/4.a375d098.js"><link rel="prefetch" href="/blog/assets/js/5.61d6a72b.js"><link rel="prefetch" href="/blog/assets/js/6.19ca0ece.js"><link rel="prefetch" href="/blog/assets/js/7.670f19f6.js"><link rel="prefetch" href="/blog/assets/js/0.600f4094.js"><link rel="prefetch" href="/blog/assets/js/10.bd8d0101.js"><link rel="prefetch" href="/blog/assets/js/11.0684896d.js"><link rel="prefetch" href="/blog/assets/js/12.c5503785.js"><link rel="prefetch" href="/blog/assets/js/13.d489fd46.js"><link rel="prefetch" href="/blog/assets/js/14.78180023.js"><link rel="prefetch" href="/blog/assets/js/15.94fb2bb1.js"><link rel="prefetch" href="/blog/assets/js/16.718066ae.js">
+    <link rel="stylesheet" href="/blog/assets/css/17.styles.16209719.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div><div class="wrap"><div class="theme-container container no-sidebar"><header class="navbar"><div class="nav-header"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/blog/" class="home-link router-link-active"><img src="/blog/logo.jpg" class="logo"><span class="site-name can-hide">
+        Chiwent's blog
+      </span></a><nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link">HOME</a></div><div class="nav-item"><a href="https://github.com/chiwent" target="_blank" rel="noopener noreferrer" class="nav-link">GITHUB</a></div><div class="nav-item"><a href="/blog/about/" class="nav-link">About</a></div><!----></nav><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div></div></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link">HOME</a></div><div class="nav-item"><a href="https://github.com/chiwent" target="_blank" rel="noopener noreferrer" class="nav-link">GITHUB</a></div><div class="nav-item"><a href="/blog/about/" class="nav-link">About</a></div><!----></nav><!----></div><div class="page-container"><div class="page card"><!----><span class="page-timestamp"></span><div class="content"><h1 id="有用的sass-mixins代码片段"><a href="#有用的sass-mixins代码片段" aria-hidden="true" class="header-anchor">#</a> 有用的SASS mixins代码片段</h1><p>参考：<a href="http://w3bits.com/sass-mixins/" target="_blank" rel="noopener noreferrer">13 Must-have SASS Mixins for Web Designers</a><br><a href="https://www.webcreatorbox.com/en/tutorials/sass-mixin-en" target="_blank" rel="noopener noreferrer">Useful Sass (SCSS) mixin Snippets</a><br></p><h3 id="_1-尺寸设置"><a href="#_1-尺寸设置" aria-hidden="true" class="header-anchor">#</a> 1.尺寸设置</h3><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token function">box</span><span class="token punctuation">(</span><span class="token variable">$width</span>, <span class="token variable">$height</span>=<span class="token variable">$width</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token property">width</span><span class="token punctuation">:</span> <span class="token variable">$width</span><span class="token punctuation">;</span>
+	<span class="token property">height</span><span class="token punctuation">:</span> <span class="token variable">$height</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>使用：</p><pre class="language-scss"><code><span class="token selector">.square </span><span class="token punctuation">{</span>
+	<span class="token keyword">@include</span> <span class="token function">box</span><span class="token punctuation">(</span>50px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.rectangle </span><span class="token punctuation">{</span>
+	<span class="token keyword">@include</span> <span class="token function">box</span><span class="token punctuation">(</span>100px, 200px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>输出:</p><pre class="language-css"><code><span class="token selector">.square</span> <span class="token punctuation">{</span>
+	<span class="token property">width</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+	<span class="token property">height</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.rectangle</span> <span class="token punctuation">{</span>
+	<span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+	<span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="_2-清除浮动"><a href="#_2-清除浮动" aria-hidden="true" class="header-anchor">#</a> 2.清除浮动</h3><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token selector">clearfix </span><span class="token punctuation">{</span>
+	<span class="token selector"><span class="token parent important">&amp;</span>:after </span><span class="token punctuation">{</span>
+		<span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">;</span>
+		<span class="token property">display</span><span class="token punctuation">:</span> table<span class="token punctuation">;</span>	
+		<span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>使用:</p><pre class="language-scss"><code><span class="token selector">.clear </span><span class="token punctuation">{</span>
+	<span class="token keyword">@include</span> clearfix<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="_3-透明度"><a href="#_3-透明度" aria-hidden="true" class="header-anchor">#</a> 3.透明度</h3><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token function">opacity</span><span class="token punctuation">(</span><span class="token variable">$opacity</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token property">opacity</span><span class="token punctuation">:</span> <span class="token variable">$opacity</span><span class="token punctuation">;</span>
+	<span class="token property"><span class="token variable">$opacity-ie</span></span><span class="token punctuation">:</span> <span class="token variable">$opacity</span> <span class="token operator">*</span> 100<span class="token punctuation">;</span>
+	<span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">alpha</span><span class="token punctuation">(</span>opacity = <span class="token variable">$opacity-ie</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//IE8</span>
+<span class="token punctuation">}</span>
+</code></pre><p>使用：</p><pre class="language-scss"><code><span class="token selector">.fade </span><span class="token punctuation">{</span>
+	<span class="token keyword">@include</span> <span class="token function">opacity</span><span class="token punctuation">(</span>.4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>输出：</p><pre class="language-css"><code><span class="token selector">.fade</span> <span class="token punctuation">{</span>
+	<span class="token property">opacity</span><span class="token punctuation">:</span> .4<span class="token punctuation">;</span>
+	<span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">alpha</span><span class="token punctuation">(</span>opacity = 40<span class="token punctuation">)</span><span class="token punctuation">;</span> //IE8
+<span class="token punctuation">}</span>
+</code></pre><h3 id="_4-定位"><a href="#_4-定位" aria-hidden="true" class="header-anchor">#</a> 4.定位</h3><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token function">position</span><span class="token punctuation">(</span><span class="token variable">$position</span>, <span class="token variable">$args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">@each</span> <span class="token selector"><span class="token variable">$o</span> in top right bottom left </span><span class="token punctuation">{</span>
+		<span class="token property"><span class="token variable">$i</span></span><span class="token punctuation">:</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token variable">$args</span>, <span class="token variable">$o</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">@if</span> <span class="token variable">$i</span> <span class="token operator">and</span> <span class="token variable">$i</span> <span class="token operator">+</span> 1 <span class="token operator">&lt;=</span> <span class="token function">length</span><span class="token punctuation">(</span><span class="token variable">$args</span><span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token function">type-of</span><span class="token punctuation">(</span><span class="token function">nth</span><span class="token punctuation">(</span><span class="token variable">$args</span>, <span class="token variable">$i</span> <span class="token operator">+</span> 1<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token selector">== number </span><span class="token punctuation">{</span>
+			<span class="token property"><span class="token variable">#{$o}</span></span><span class="token punctuation">:</span> <span class="token function">nth</span><span class="token punctuation">(</span><span class="token variable">$args</span>, <span class="token variable">$i</span> <span class="token operator">+</span> 1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	<span class="token property">position</span><span class="token punctuation">:</span> <span class="token variable">$position</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">@mixin</span> <span class="token function">absolute</span><span class="token punctuation">(</span><span class="token property"><span class="token variable">$args</span></span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">@include</span> <span class="token function">position</span><span class="token punctuation">(</span>absolute, <span class="token variable">$args</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">@mixin</span> <span class="token function">fixed</span><span class="token punctuation">(</span><span class="token property"><span class="token variable">$args</span></span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">@include</span> <span class="token function">position</span><span class="token punctuation">(</span>fixed, <span class="token variable">$args</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">@mixin</span> <span class="token function">relative</span><span class="token punctuation">(</span><span class="token property"><span class="token variable">$args</span></span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">@include</span> <span class="token function">position</span><span class="token punctuation">(</span>relative, <span class="token variable">$args</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>使用：</p><pre class="language-scss"><code><span class="token selector">.menu li </span><span class="token punctuation">{</span>
+	<span class="token keyword">@include</span> relative<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.sub-menu </span><span class="token punctuation">{</span>
+	<span class="token keyword">@include</span> <span class="token function">absolute</span><span class="token punctuation">(</span>top 100% left 0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.sticky-bar </span><span class="token punctuation">{</span>
+	<span class="token keyword">@include</span> <span class="token function">fixed</span><span class="token punctuation">(</span>top 0 left 0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>输出：</p><pre class="language-css"><code><span class="token selector">.menu li</span> <span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.sub-menu</span> <span class="token punctuation">{</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.sticky-bar</span> <span class="token punctuation">{</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>绝对定位：</p><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token function">absPosition</span><span class="token punctuation">(</span><span class="token property"><span class="token variable">$top</span></span><span class="token punctuation">:</span> auto, <span class="token property"><span class="token variable">$right</span></span><span class="token punctuation">:</span> auto, <span class="token property"><span class="token variable">$bottom</span></span><span class="token punctuation">:</span> auto, <span class="token property"><span class="token variable">$left</span></span><span class="token punctuation">:</span> auto<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+	<span class="token property">top</span><span class="token punctuation">:</span> <span class="token variable">$top</span><span class="token punctuation">;</span>
+	<span class="token property">right</span><span class="token punctuation">:</span> <span class="token variable">$right</span><span class="token punctuation">;</span>
+	<span class="token property">bottom</span><span class="token punctuation">:</span> <span class="token variable">$bottom</span><span class="token punctuation">;</span>
+	<span class="token property">left</span><span class="token punctuation">:</span> <span class="token variable">$left</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="_5-rem布局"><a href="#_5-rem布局" aria-hidden="true" class="header-anchor">#</a> 5.rem布局</h3><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token function">font-size</span><span class="token punctuation">(</span><span class="token property"><span class="token variable">$size</span></span><span class="token punctuation">:</span> 24, <span class="token property"><span class="token variable">$base</span></span><span class="token punctuation">:</span> 16<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token variable">$size</span> <span class="token operator">+</span> px<span class="token punctuation">;</span>
+	<span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token variable">$size</span> <span class="token operator">/</span> <span class="token variable">$base</span><span class="token punctuation">)</span> <span class="token operator">*</span> 1rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>使用:</p><pre class="language-scss"><code><span class="token selector">body </span><span class="token punctuation">{</span>
+	<span class="token keyword">@include</span> <span class="token function">font-size</span><span class="token punctuation">(</span>16<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">p </span><span class="token punctuation">{</span>
+	<span class="token keyword">@include</span> <span class="token function">font-size</span><span class="token punctuation">(</span>12, 10<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>输出：</p><pre class="language-css"><code><span class="token selector">body</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 12px<span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 1.2rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="_6-浏览器前缀"><a href="#_6-浏览器前缀" aria-hidden="true" class="header-anchor">#</a> 6.浏览器前缀</h3><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token function">prefix</span><span class="token punctuation">(</span><span class="token variable">$property</span>, <span class="token variable">$value</span>, <span class="token property"><span class="token variable">$vendors</span></span><span class="token punctuation">:</span> webkit moz ms o, <span class="token property"><span class="token variable">$default</span></span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">@if</span> <span class="token selector"><span class="token variable">$vendors</span> </span><span class="token punctuation">{</span>
+		<span class="token keyword">@each</span> <span class="token selector"><span class="token variable">$vendor</span> in <span class="token variable">$vendors</span> </span><span class="token punctuation">{</span>
+			#<span class="token punctuation">{</span><span class="token string">&quot;-&quot;</span> <span class="token operator">+</span> <span class="token variable">$vendor</span> <span class="token operator">+</span> <span class="token string">&quot;-&quot;</span> <span class="token operator">+</span> <span class="token variable">$property</span><span class="token punctuation">}</span><span class="token punctuation">:</span> <span class="token variable">#{$value}</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">@if</span> <span class="token selector"><span class="token variable">$default</span> </span><span class="token punctuation">{</span>
+		<span class="token property"><span class="token variable">#{$property}</span></span> <span class="token punctuation">:</span> <span class="token variable">#{$value}</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*or*/</span>
+
+<span class="token keyword">@mixin</span> <span class="token function">prefix</span><span class="token punctuation">(</span><span class="token variable">$property</span>, <span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">@each</span> <span class="token selector"><span class="token variable">$prefix</span> in -webkit-, -moz-, -ms-, -o-, '', </span><span class="token punctuation">{</span>
+		<span class="token property"><span class="token variable">#{$prefix}</span><span class="token variable">#{$property}</span></span><span class="token punctuation">:</span> <span class="token variable">$value</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>使用:</p><pre class="language-scss"><code><span class="token selector">html </span><span class="token punctuation">{</span>
+	<span class="token keyword">@include</span> <span class="token function">prefix</span><span class="token punctuation">(</span><span class="token string">'box-sizing'</span>, <span class="token string">'border-box'</span>, webkit moz ms o<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">*,
+*:before,
+*:after </span><span class="token punctuation">{</span>
+	<span class="token keyword">@include</span> <span class="token function">prefix</span><span class="token punctuation">(</span><span class="token string">'box-sizing'</span>, <span class="token string">'inherit'</span>, webkit moz ms o<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>输出:</p><pre class="language-css"><code><span class="token selector">html</span> <span class="token punctuation">{</span>
+  <span class="token property">-webkit-box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span>
+  <span class="token property">-moz-box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span>
+  <span class="token property">-ms-box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span>
+  <span class="token property">-o-box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span>
+  <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">*,
+*:before,
+*:after</span> <span class="token punctuation">{</span>
+  <span class="token property">-webkit-box-sizing</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+  <span class="token property">-moz-box-sizing</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+  <span class="token property">-ms-box-sizing</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+  <span class="token property">-o-box-sizing</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+  <span class="token property">box-sizing</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="_7-media-query"><a href="#_7-media-query" aria-hidden="true" class="header-anchor">#</a> 7.media query</h3><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token function">screen</span><span class="token punctuation">(</span><span class="token variable">$size</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token property"><span class="token variable">$desktop</span></span><span class="token punctuation">:</span> <span class="token string">&quot;(min-width: 1024px)&quot;</span><span class="token punctuation">;</span>
+	<span class="token property"><span class="token variable">$tablet</span></span><span class="token punctuation">:</span> <span class="token string">&quot;(min-width: 768px) and (max-width: 1023px)&quot;</span><span class="token punctuation">;</span>
+	<span class="token property"><span class="token variable">$mobile</span></span><span class="token punctuation">:</span> <span class="token string">&quot;(max-width: 767px)&quot;</span><span class="token punctuation">;</span>
+	<span class="token keyword">@if</span> <span class="token selector"><span class="token variable">$size</span> == desktop </span><span class="token punctuation">{</span>
+		<span class="token atrule"><span class="token rule">@media</span> only screen <span class="token operator">and</span> <span class="token variable">#{$desktop}</span></span> <span class="token punctuation">{</span>
+			<span class="token keyword">@content</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">@else if</span> <span class="token selector"><span class="token variable">$size</span> == tablet </span><span class="token punctuation">{</span>
+		<span class="token atrule"><span class="token rule">@media</span> only screen <span class="token operator">and</span> <span class="token variable">#{$tablet}</span></span> <span class="token punctuation">{</span>
+			<span class="token keyword">@content</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">@else if</span> <span class="token selector"><span class="token variable">$size</span> == mobile </span><span class="token punctuation">{</span>
+		<span class="token atrule"><span class="token rule">@media</span> only screen <span class="token operator">and</span> <span class="token variable">#{$mobile}</span></span> <span class="token punctuation">{</span>
+			<span class="token keyword">@content</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">@else</span> <span class="token punctuation">{</span>
+		<span class="token atrule"><span class="token rule">@media</span> only screen <span class="token operator">and</span> <span class="token variable">#{$size}</span></span> <span class="token punctuation">{</span>
+			<span class="token keyword">@content</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>使用：</p><pre class="language-scss"><code><span class="token selector">.wrapper </span><span class="token punctuation">{</span>
+	<span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+	<span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+	<span class="token keyword">@include</span> <span class="token function">screen</span><span class="token punctuation">(</span><span class="token string">'tablet'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token property">width</span><span class="token punctuation">:</span> 90%<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">@include</span> <span class="token function">screen</span><span class="token punctuation">(</span><span class="token string">'desktop'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token property">width</span><span class="token punctuation">:</span> 85%<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>输出：</p><pre class="language-css"><code><span class="token selector">.wrapper</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> only screen and <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span> and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 1023px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.wrapper</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 90%<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> only screen and <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1024px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.wrapper</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 85%<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="retina-images"><a href="#retina-images" aria-hidden="true" class="header-anchor">#</a> Retina Images</h3><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token function">retina</span><span class="token punctuation">(</span><span class="token variable">$image</span>, <span class="token variable">$width</span>, <span class="token variable">$height</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min--moz-device-pixel-ratio</span><span class="token punctuation">:</span> 1.3<span class="token punctuation">)</span>,
+  <span class="token punctuation">(</span><span class="token property">-o-min-device-pixel-ratio</span><span class="token punctuation">:</span> 2.6/2<span class="token punctuation">)</span>,
+  <span class="token punctuation">(</span><span class="token property">-webkit-min-device-pixel-ratio</span><span class="token punctuation">:</span> 1.3<span class="token punctuation">)</span>,
+  <span class="token punctuation">(</span><span class="token property">min-device-pixel-ratio</span><span class="token punctuation">:</span> 1.3<span class="token punctuation">)</span>,
+  <span class="token punctuation">(</span><span class="token property">min-resolution</span><span class="token punctuation">:</span> 1.3dppx<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token comment">/* Serving 2x image on Retina display */</span>
+    <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url">url</span><span class="token punctuation">(</span><span class="token variable">$image</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">background-size</span><span class="token punctuation">:</span> <span class="token variable">$width</span> <span class="token variable">$height</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>使用：</p><pre class="language-scss"><code><span class="token selector">.logo </span><span class="token punctuation">{</span>
+<span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url">url</span><span class="token punctuation">(</span><span class="token string">&quot;img/logo.png&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">@include</span> <span class="token function">retina</span><span class="token punctuation">(</span><span class="token string">&quot;img/logo@2x.png&quot;</span>, 100px, 21px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>输出：</p><pre class="language-css"><code><span class="token selector">.logo</span> <span class="token punctuation">{</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url">url(&quot;img/logo.png&quot;)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min--moz-device-pixel-ratio</span><span class="token punctuation">:</span> 1.3<span class="token punctuation">)</span>, <span class="token punctuation">(</span><span class="token property">-o-min-device-pixel-ratio</span><span class="token punctuation">:</span> 2.6 / 2<span class="token punctuation">)</span>, <span class="token punctuation">(</span><span class="token property">-webkit-min-device-pixel-ratio</span><span class="token punctuation">:</span> 1.3<span class="token punctuation">)</span>, <span class="token punctuation">(</span><span class="token property">min-device-pixel-ratio</span><span class="token punctuation">:</span> 1.3<span class="token punctuation">)</span>, <span class="token punctuation">(</span><span class="token property">min-resolution</span><span class="token punctuation">:</span> 1.3dppx<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.logo</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* Serving HQ image on Retina display */</span>
+    <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">url</span><span class="token punctuation">(</span><span class="token string">&quot;img/logo@2x.png&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">background-size</span><span class="token punctuation">:</span> 100px 21px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="_9-css3-keyframes"><a href="#_9-css3-keyframes" aria-hidden="true" class="header-anchor">#</a> 9.CSS3 keyframes</h3><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token function">keyframes</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token atrule"><span class="token rule">@-webkit-keyframes</span> <span class="token variable">#{$name}</span></span> <span class="token punctuation">{</span>
+    <span class="token keyword">@content</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token atrule"><span class="token rule">@-moz-keyframes</span> <span class="token variable">#{$name}</span></span> <span class="token punctuation">{</span>
+    <span class="token keyword">@content</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token atrule"><span class="token rule">@keyframes</span> <span class="token variable">#{$name}</span></span> <span class="token punctuation">{</span>
+    <span class="token keyword">@content</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>使用：</p><pre class="language-scss"><code><span class="token keyword">@include</span> <span class="token function">keyframes</span><span class="token punctuation">(</span>animate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token selector">50% </span><span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span>90deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">100% </span><span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span>-90deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>输出：</p><pre class="language-css"><code><span class="token atrule"><span class="token rule">@-webkit-keyframes</span> animate</span> <span class="token punctuation">{</span>
+  <span class="token selector">50%</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span>90deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">100%</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span>-90deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@-moz-keyframes</span> animate</span> <span class="token punctuation">{</span>
+  <span class="token selector">50%</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span>90deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">100%</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span>-90deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@keyframes</span> animate</span> <span class="token punctuation">{</span>
+  <span class="token selector">50%</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span>90deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">100%</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span>-90deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="_10-background-gradient"><a href="#_10-background-gradient" aria-hidden="true" class="header-anchor">#</a> 10.background gradient</h3><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token function">gradient</span><span class="token punctuation">(</span><span class="token variable">$start-color</span>, <span class="token variable">$end-color</span>, <span class="token variable">$orientation</span><span class="token punctuation">)</span>
+ <span class="token punctuation">{</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token variable">$start-color</span><span class="token punctuation">;</span>
+ <span class="token keyword">@if</span> <span class="token selector"><span class="token variable">$orientation</span> == vertical
+ </span><span class="token punctuation">{</span>
+ <span class="token comment">// vertical</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-moz-linear-gradient</span><span class="token punctuation">(</span>top,  <span class="token variable">$start-color</span> 0%, <span class="token variable">$end-color</span> 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-webkit-gradient</span><span class="token punctuation">(</span>linear, left top, left bottom, <span class="token function">color-stop</span><span class="token punctuation">(</span>0%,<span class="token variable">$start-color</span><span class="token punctuation">)</span>, <span class="token function">color-stop</span><span class="token punctuation">(</span>100%,<span class="token variable">$end-color</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-webkit-linear-gradient</span><span class="token punctuation">(</span>top,  <span class="token variable">$start-color</span> 0%,<span class="token variable">$end-color</span> 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-o-linear-gradient</span><span class="token punctuation">(</span>top,  <span class="token variable">$start-color</span> 0%,<span class="token variable">$end-color</span> 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-ms-linear-gradient</span><span class="token punctuation">(</span>top,  <span class="token variable">$start-color</span> 0%,<span class="token variable">$end-color</span> 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>to bottom,  <span class="token variable">$start-color</span> 0%,<span class="token variable">$end-color</span> 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token property">progid</span><span class="token punctuation">:</span>DXImageTransform.Microsoft.<span class="token function">gradient</span><span class="token punctuation">(</span> startColorstr=<span class="token string">'$start-color'</span>, endColorstr=<span class="token string">'$end-color'</span>,GradientType=0 <span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+ <span class="token keyword">@else if</span> <span class="token selector"><span class="token variable">$orientation</span> == horizontal
+ </span><span class="token punctuation">{</span>
+ <span class="token comment">// horizontal</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-moz-linear-gradient</span><span class="token punctuation">(</span>left,  <span class="token variable">$start-color</span> 0%, <span class="token variable">$end-color</span> 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-webkit-gradient</span><span class="token punctuation">(</span>linear, left top, right top, <span class="token function">color-stop</span><span class="token punctuation">(</span>0%,<span class="token variable">$start-color</span><span class="token punctuation">)</span>, <span class="token function">color-stop</span><span class="token punctuation">(</span>100%,<span class="token variable">$end-color</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-webkit-linear-gradient</span><span class="token punctuation">(</span>left,  <span class="token variable">$start-color</span> 0%,<span class="token variable">$end-color</span> 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-o-linear-gradient</span><span class="token punctuation">(</span>left,  <span class="token variable">$start-color</span> 0%,<span class="token variable">$end-color</span> 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-ms-linear-gradient</span><span class="token punctuation">(</span>left,  <span class="token variable">$start-color</span> 0%,<span class="token variable">$end-color</span> 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>to right,  <span class="token variable">$start-color</span> 0%,<span class="token variable">$end-color</span> 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token property">progid</span><span class="token punctuation">:</span>DXImageTransform.Microsoft.<span class="token function">gradient</span><span class="token punctuation">(</span> startColorstr=<span class="token string">'$start-color'</span>, endColorstr=<span class="token string">'$end-color'</span>,GradientType=1 <span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+ <span class="token keyword">@else</span>
+ <span class="token punctuation">{</span>
+ <span class="token comment">// radial</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-moz-radial-gradient</span><span class="token punctuation">(</span>center, ellipse cover,  <span class="token variable">$start-color</span> 0%, <span class="token variable">$end-color</span> 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-webkit-gradient</span><span class="token punctuation">(</span>radial, center center, 0px, center center, 100%, <span class="token function">color-stop</span><span class="token punctuation">(</span>0%,<span class="token variable">$start-color</span><span class="token punctuation">)</span>, <span class="token function">color-stop</span><span class="token punctuation">(</span>100%,<span class="token variable">$end-color</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-webkit-radial-gradient</span><span class="token punctuation">(</span>center, ellipse cover,  <span class="token variable">$start-color</span> 0%,<span class="token variable">$end-color</span> 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-o-radial-gradient</span><span class="token punctuation">(</span>center, ellipse cover,  <span class="token variable">$start-color</span> 0%,<span class="token variable">$end-color</span> 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-ms-radial-gradient</span><span class="token punctuation">(</span>center, ellipse cover,  <span class="token variable">$start-color</span> 0%,<span class="token variable">$end-color</span> 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">radial-gradient</span><span class="token punctuation">(</span>ellipse at center,  <span class="token variable">$start-color</span> 0%,<span class="token variable">$end-color</span> 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token property">progid</span><span class="token punctuation">:</span>DXImageTransform.Microsoft.<span class="token function">gradient</span><span class="token punctuation">(</span> startColorstr=<span class="token string">'$start-color'</span>, endColorstr=<span class="token string">'$end-color'</span>,GradientType=1 <span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+ <span class="token punctuation">}</span>
+</code></pre><p>使用：</p><pre class="language-scss"><code><span class="token selector">div </span><span class="token punctuation">{</span>
+ <span class="token keyword">@include</span> <span class="token function">gradient</span><span class="token punctuation">(</span>#ff00ff, #ff00cc, vertical<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>输出：</p><pre class="language-css"><code><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> #ff00ff<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-moz-linear-gradient</span><span class="token punctuation">(</span>top, #ff00ff 0%, #ff00cc 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-webkit-gradient</span><span class="token punctuation">(</span>linear, left top, left bottom, <span class="token function">color-stop</span><span class="token punctuation">(</span>0%, #ff00ff<span class="token punctuation">)</span>, <span class="token function">color-stop</span><span class="token punctuation">(</span>100%, #ff00cc<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-webkit-linear-gradient</span><span class="token punctuation">(</span>top, #ff00ff 0%, #ff00cc 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-o-linear-gradient</span><span class="token punctuation">(</span>top, #ff00ff 0%, #ff00cc 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">-ms-linear-gradient</span><span class="token punctuation">(</span>top, #ff00ff 0%, #ff00cc 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>to bottom, #ff00ff 0%, #ff00cc 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token property">progid</span><span class="token punctuation">:</span>DXImageTransform.Microsoft.<span class="token function">gradient</span><span class="token punctuation">(</span> startColorstr=<span class="token string">&quot;$start-color&quot;</span>, endColorstr=<span class="token string">&quot;$end-color&quot;</span>,GradientType=0 <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="_11-font-face"><a href="#_11-font-face" aria-hidden="true" class="header-anchor">#</a> 11.@font-face</h3><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token function">font-face</span><span class="token punctuation">(</span><span class="token variable">$font-name</span>, <span class="token variable">$file-name</span>, <span class="token property"><span class="token variable">$weight</span></span><span class="token punctuation">:</span> normal, <span class="token property"><span class="token variable">$style</span></span><span class="token punctuation">:</span> normal<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token atrule"><span class="token rule">@font-face</span></span> <span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token function">quote</span><span class="token punctuation">(</span><span class="token variable">$font-name</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url">url</span><span class="token punctuation">(</span><span class="token variable">$file-name</span> <span class="token operator">+</span> <span class="token string">'.eot'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url">url</span><span class="token punctuation">(</span><span class="token variable">$file-name</span> <span class="token operator">+</span> <span class="token string">'.eot?#iefix'</span><span class="token punctuation">)</span>  <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'embedded-opentype'</span><span class="token punctuation">)</span>,
+    <span class="token url">url</span><span class="token punctuation">(</span><span class="token variable">$file-name</span> <span class="token operator">+</span> <span class="token string">'.woff'</span><span class="token punctuation">)</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'woff'</span><span class="token punctuation">)</span>,
+    <span class="token url">url</span><span class="token punctuation">(</span><span class="token variable">$file-name</span> <span class="token operator">+</span> <span class="token string">'.ttf'</span><span class="token punctuation">)</span>  <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'truetype'</span><span class="token punctuation">)</span>,
+    <span class="token url">url</span><span class="token punctuation">(</span><span class="token variable">$file-name</span> <span class="token operator">+</span> <span class="token string">'.svg##{$font-name}'</span><span class="token punctuation">)</span>  <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'svg'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> <span class="token variable">$weight</span><span class="token punctuation">;</span>
+    <span class="token property">font-style</span><span class="token punctuation">:</span> <span class="token variable">$style</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>使用：</p><pre class="language-scss"><code><span class="token keyword">@include</span> <span class="token function">font-face</span><span class="token punctuation">(</span><span class="token string">&quot;MyFont&quot;</span>, <span class="token string">&quot;path/to/MyFont&quot;</span>, <span class="token property"><span class="token variable">$style</span></span><span class="token punctuation">:</span> normal, <span class="token property"><span class="token variable">$weight</span></span><span class="token punctuation">:</span> normal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><p>输出:</p><pre class="language-css"><code><span class="token atrule"><span class="token rule">@font-face</span></span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">&quot;MyFont&quot;</span><span class="token punctuation">;</span>
+  <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url">url(&quot;path/to/MyFont.eot&quot;)</span><span class="token punctuation">;</span>
+  <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url">url(&quot;path/to/MyFont.eot?#iefix&quot;)</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">&quot;embedded-opentype&quot;</span><span class="token punctuation">)</span>, <span class="token url">url(&quot;path/to/MyFont.woff&quot;)</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">&quot;woff&quot;</span><span class="token punctuation">)</span>, <span class="token url">url(&quot;path/to/MyFont.ttf&quot;)</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">&quot;truetype&quot;</span><span class="token punctuation">)</span>, <span class="token url">url(&quot;path/to/MyFont.svg#MyFont&quot;)</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">&quot;svg&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+  <span class="token property">font-style</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="_12-块状水平居中"><a href="#_12-块状水平居中" aria-hidden="true" class="header-anchor">#</a> 12.块状水平居中</h3><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token selector">center-block </span><span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+  <span class="token property">margin-left</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+  <span class="token property">margin-right</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>使用：</p><pre class="language-scss"><code><span class="token selector">.wrapper </span><span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> center-block<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>输出：</p><pre class="language-text"><code>.wrapper {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</code></pre><h3 id="_13-垂直居中"><a href="#_13-垂直居中" aria-hidden="true" class="header-anchor">#</a> 13.垂直居中</h3><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token selector">center-vertically </span><span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+  <span class="token keyword">@include</span> <span class="token function">prefix</span><span class="token punctuation">(</span>transform, <span class="token function">translate</span><span class="token punctuation">(</span>-50%, -50%<span class="token punctuation">)</span>, <span class="token string">'webkit'</span> <span class="token string">'ms'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>使用：</p><pre class="language-scss"><code><span class="token selector">.vc-box </span><span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> center-vertically<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>输出：</p><pre class="language-css"><code><span class="token selector">.vc-box</span> <span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+  <span class="token property">-webkit-transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>-50%, -50%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">-ms-transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>-50%, -50%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>-50%, -50%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
+        ← <a href="/blog/main/learn-promise.html" class="prev">
+          学习Promise
+        </a></span><span class="next"><a href="/blog/main/vuex入门.html">
+          vuex入门
+        </a> →
+      </span></p></div></div><!----></div><div class="tool-group"><!----></div></div></div><div class="background-mask" style="background:#f6f6f6;"></div></div></div>
+    <script src="/blog/assets/js/8.7b1acf37.js" defer></script><script src="/blog/assets/js/app.f602ab0d.js" defer></script>
+  </body>
+</html>
